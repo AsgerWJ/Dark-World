@@ -1,17 +1,32 @@
 #include "stdafx.h"
 #include "Entities.h"
-
-Entity::Entity(int x, int y)
+namespace dw
 {
+  BaseEntity::BaseEntity(int x, int y)
+  {
+  m_selectable = false; //default non-selectable
   //Nothing to do here
-}
+  }
 
-int Entity::Update()
-{
-  return Entity::UNSPECIFIED_ERROR;
-}
+  int BaseEntity::Update()
+  {
+  return BaseEntity::UNSPECIFIED_ERROR;
+  }
 
-void Entity::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
+  void BaseEntity::draw(sf::RenderTarget& target, sf::RenderStates states) const
+  {
 
-}
+  }
+
+  /// Control functions
+
+  int BaseEntity::SetSelected(bool selected)
+  {
+  return BaseEntity::ENTITY_NONSELECTABLE;
+  }
+
+  int BaseEntity::SetMoveTarget(int x, int y)
+  {
+  return BaseEntity::MOVETARGET_INVALID;
+  }
+}; //end namespace

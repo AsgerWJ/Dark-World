@@ -2,11 +2,18 @@
 //
 
 #include "stdafx.h"
-#include "Man.h"
+#include "Entities.h"
+#include "Human.h"
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
-  sf::RenderWindow mainWindow(sf::VideoMode(1200,800), "Dark World");
+
+  int gameWidth = 1024;
+  int gameHeight = 860;
+  // Create the window of the application
+  sf::RenderWindow mainWindow(sf::VideoMode(gameWidth, gameHeight, 32), "Dark World", sf::Style::Titlebar | sf::Style::Close);
+  mainWindow.setVerticalSyncEnabled(true);
+
   sf::View mainView = mainWindow.getDefaultView();
 
   //Attach view to window
@@ -15,12 +22,9 @@ int _tmain(int argc, _TCHAR* argv[])
   //Set vertical sync
   mainWindow.setVerticalSyncEnabled(true);
 
+  dw::BaseEntity test1(10,10);
+  dw::Human test2(10,10);
 
-  //Test things
-  sf::RectangleShape rect1(sf::Vector2f(100,100));
-  rect1.setFillColor(sf::Color::Red);
-
-  Man man1(10,10);
 
   //Main game loop
   while(mainWindow.isOpen() )
@@ -32,37 +36,34 @@ int _tmain(int argc, _TCHAR* argv[])
       {
         //exit program
         mainWindow.close();
-      }
-      else if(event.type == sf::Event::KeyPressed)
-      {
-
+        break;
       }
     }
-            //Do key press action!
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
-        {
-          mainView.move(0,-10);
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
-        {
-          mainView.move(0,10);
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
-        {
-          mainView.move(-10,0);
-        }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
-        {
-          mainView.move(10,0);
-        }
-        mainWindow.setView(mainView);
+    //Do key press action!
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
+    {
+      mainView.move(0,-10);
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
+    {
+      mainView.move(0,10);
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
+    {
+      mainView.move(-10,0);
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
+    {
+      mainView.move(10,0);
+    }
+    mainWindow.setView(mainView);
 
 
     //No more events, continue with main loop
-    mainWindow.clear(sf::Color::Black);
+    mainWindow.clear(sf::Color::White);
     //window cleared, redraw stuff
-    mainWindow.draw(rect1);
-    //mainWindow.draw(man1);
+
+    mainWindow.draw(test2);
 
     //End of this frame
     mainWindow.display();

@@ -36,7 +36,7 @@
     <ClInclude Include="Entities.h">
       <Filter>Entities\Prototypes</Filter>
     </ClInclude>
-    <ClInclude Include="Man.h">
+    <ClInclude Include="Human.h">
       <Filter>Entities\Creatures</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClCompile Include="Entities.cpp">
       <Filter>Entities\Prototypes</Filter>
     </ClCompile>
-    <ClCompile Include="Man.cpp">
+    <ClCompile Include="Human.cpp">
       <Filter>Entities\Creatures</Filter>
     </ClCompile>
   </ItemGroup>
