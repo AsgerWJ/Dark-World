@@ -8,7 +8,7 @@ namespace dw
   //Nothing to do here
   }
 
-  int BaseEntity::Update()
+  int BaseEntity::Update(const sf::Time &timeFrame)
   {
   return BaseEntity::UNSPECIFIED_ERROR;
   }

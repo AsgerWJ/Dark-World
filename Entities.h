@@ -1,5 +1,6 @@
 #ifndef ENTITIES_H
 #define ENTITIES_H
+
 namespace dw
 {
   class BaseEntity : public sf::Drawable
@@ -7,7 +8,7 @@ namespace dw
   public:
     BaseEntity(int x, int y);
 
-    virtual int Update(); //Updates entity. Call this before drawing
+    virtual int Update(const sf::Time &timeFrame); //Updates entity. Call this before drawing
 
     // Control functions
     virtual int SetSelected(bool selected); //Select or de-select this entity
@@ -35,8 +36,12 @@ namespace dw
     };
 
   protected:
-    int m_xpos;
-    int m_ypos;
+    float m_xpos;
+    float m_ypos;
+    float m_speed; //pixel/sec
+
+    float m_xtarget;
+    float m_ytarget;
 
     bool m_selectable;
 

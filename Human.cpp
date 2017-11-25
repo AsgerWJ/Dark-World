@@ -30,4 +30,10 @@ namespace dw
     target.draw(m_hejsa, states);
     target.draw(m_vertices,states);
   }
+
+  int Human::Update(const sf::Time &timeFrame)
+  {
+    m_xpos = (m_xpos-m_xtarget) * (m_speed*timeFrame.asSeconds() );
+    return 1;
+  }
 }; //end namespace dw

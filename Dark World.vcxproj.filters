@@ -22,6 +22,9 @@
     <Filter Include="Entities\Creatures">
       <UniqueIdentifier>{f65f3f58-6502-4906-b6ff-d5c8cc4d8374}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{2afe6fae-d71f-469c-8ea9-85a420d874e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -39,6 +42,9 @@
     <ClInclude Include="Human.h">
       <Filter>Entities\Creatures</Filter>
     </ClInclude>
+    <ClInclude Include="ConfigurationManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -52,6 +58,9 @@
     </ClCompile>
     <ClCompile Include="Human.cpp">
       <Filter>Entities\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigurationManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -23,12 +23,19 @@ int main()
   mainWindow.setVerticalSyncEnabled(true);
 
   dw::BaseEntity test1(10,10);
-  dw::Human test2(10,10);
+  dw::Human human(10,10);
+
+  //Time stuff
+  sf::Clock frameClock;
+	sf::Time frameTime = frameClock.restart();
 
 
   //Main game loop
   while(mainWindow.isOpen() )
   {
+    //Get delta time
+    sf::Time deltaTime = frameClock.restart();
+
     sf::Event event;
     while(mainWindow.pollEvent(event))
     {
@@ -56,14 +63,21 @@ int main()
     {
       mainView.move(10,0);
     }
+
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Right) )
+    {
+      sf::Vector2i pos = sf::Mouse::getPosition(mainWindow);
+      human.SetMoveTarget(pos.x,pos.y);
+    }
     mainWindow.setView(mainView);
 
 
     //No more events, continue with main loop
     mainWindow.clear(sf::Color::White);
-    //window cleared, redraw stuff
+    //window cleared, update stuff
+    human.Update(deltaTime);
 
-    mainWindow.draw(test2);
+    mainWindow.draw(human);
 
     //End of this frame
     mainWindow.display();
