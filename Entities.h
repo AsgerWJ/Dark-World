@@ -3,16 +3,16 @@
 
 namespace dw
 {
-  class BaseEntity : public sf::Drawable
+  class BaseEntity : public sf::Drawable , public sf::Transformable
   {
   public:
-    BaseEntity(int x, int y);
+    BaseEntity(sf::Vector2f spawnPos);
 
     virtual int Update(const sf::Time &timeFrame); //Updates entity. Call this before drawing
 
     // Control functions
     virtual int SetSelected(bool selected); //Select or de-select this entity
-    virtual int SetMoveTarget(int x, int y); //
+    virtual int SetMoveTarget(sf::Vector2f target); //
 
 
 
@@ -35,15 +35,21 @@ namespace dw
       MOVETARGET_INVALID
     };
 
-  protected:
-    float m_xpos;
-    float m_ypos;
-    float m_speed; //pixel/sec
+    enum STATE
+    {
+      IDLE = 0,
+      MOVING
+    };
 
-    float m_xtarget;
-    float m_ytarget;
+  protected:
+    sf::Vector2f m_pos;
+    float m_speed; //pixel/sec
+    sf::Vector2f m_target; //Target coordinates
+    sf::Vector2f m_targetDirection; //Target direction normalized
 
     bool m_selectable;
+
+    int m_state;
 
   private:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;

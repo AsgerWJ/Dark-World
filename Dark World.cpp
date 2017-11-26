@@ -22,8 +22,8 @@ int main()
   //Set vertical sync
   mainWindow.setVerticalSyncEnabled(true);
 
-  dw::BaseEntity test1(10,10);
-  dw::Human human(10,10);
+  dw::BaseEntity test1(sf::Vector2f(10,10));
+  dw::Human human(sf::Vector2f(10,10));
 
   //Time stuff
   sf::Clock frameClock;
@@ -67,7 +67,7 @@ int main()
     if(sf::Mouse::isButtonPressed(sf::Mouse::Right) )
     {
       sf::Vector2i pos = sf::Mouse::getPosition(mainWindow);
-      human.SetMoveTarget(pos.x,pos.y);
+      human.SetMoveTarget(sf::Vector2f(pos.x, pos.y) );
     }
     mainWindow.setView(mainView);
 

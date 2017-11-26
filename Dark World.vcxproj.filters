@@ -25,6 +25,9 @@
     <Filter Include="Managers">
       <UniqueIdentifier>{2afe6fae-d71f-469c-8ea9-85a420d874e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{ea227335-bc42-4a9d-894d-304c02598784}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -45,6 +48,9 @@
     <ClInclude Include="ConfigurationManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="dwUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -61,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="ConfigurationManager.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="dwUtil.cpp">
+      <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

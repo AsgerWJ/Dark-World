@@ -2,7 +2,7 @@
 #include "Entities.h"
 namespace dw
 {
-  BaseEntity::BaseEntity(int x, int y)
+  BaseEntity::BaseEntity(sf::Vector2f spawnPos)
   {
   m_selectable = false; //default non-selectable
   //Nothing to do here
@@ -25,8 +25,9 @@ namespace dw
   return BaseEntity::ENTITY_NONSELECTABLE;
   }
 
-  int BaseEntity::SetMoveTarget(int x, int y)
+  int BaseEntity::SetMoveTarget(sf::Vector2f target)
   {
-  return BaseEntity::MOVETARGET_INVALID;
+    m_state = BaseEntity::STATE::IDLE;
+    return BaseEntity::MOVETARGET_INVALID;
   }
 }; //end namespace

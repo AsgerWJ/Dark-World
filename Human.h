@@ -9,13 +9,15 @@ namespace dw
   class Human : public dw::BaseEntity
   {
   public:
-    Human(int x, int y);
+    Human(sf::Vector2f spawnPos);
 
     int Update(const sf::Time &timeFrame);
 
-  protected:
-    sf::RectangleShape m_hejsa;
+    int SetMoveTarget(sf::Vector2f target);
 
+  protected:
+
+    float m_size;
     sf::VertexArray m_vertices;
 
 
