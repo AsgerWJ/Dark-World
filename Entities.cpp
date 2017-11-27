@@ -30,4 +30,9 @@ namespace dw
     m_state = BaseEntity::STATE::IDLE;
     return BaseEntity::MOVETARGET_INVALID;
   }
+
+  sf::Vector2f BaseEntity::GetPos()
+  {
+    return m_pos;
+  }
 }; //end namespace
