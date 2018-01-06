@@ -9,6 +9,9 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include <list>
+#include <vector>
+#include <algorithm>
 #include <SFML/Graphics.hpp>
 #include <SFML\System\Time.hpp>
 

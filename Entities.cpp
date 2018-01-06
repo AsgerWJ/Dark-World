@@ -35,4 +35,18 @@ namespace dw
   {
     return m_pos;
   }
+
+  //Return true if provided point is within entity
+  bool BaseEntity::ContainsPoint(sf::Vector2f point)
+  {
+    bool inside = true;
+    //outide x
+    if(point.x < (m_pos.x - m_size.x/2) || point.x > (m_pos.x + m_size.x/2) )
+      inside = false;
+
+    //outside y
+    if(point.y < (m_pos.y - m_size.y/2) || point.y > (m_pos.y + m_size.y/2) )
+      inside = false;
+    return inside;
+  }
 }; //end namespace

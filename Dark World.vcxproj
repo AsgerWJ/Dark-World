@@ -92,6 +92,7 @@
     <ClInclude Include="Entities.h" />
     <ClInclude Include="Human.h" />
     <ClInclude Include="SelectionManager.h" />
+    <ClInclude Include="SelectionMarker.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -102,6 +103,7 @@
     <ClCompile Include="Entities.cpp" />
     <ClCompile Include="Human.cpp" />
     <ClCompile Include="SelectionManager.cpp" />
+    <ClCompile Include="SelectionMarker.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

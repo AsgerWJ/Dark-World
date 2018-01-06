@@ -15,6 +15,7 @@ namespace dw
     virtual int SetMoveTarget(sf::Vector2f target); //
     virtual sf::Vector2f GetPos();
 
+    virtual bool ContainsPoint(sf::Vector2f point);
 
 
     enum
@@ -44,6 +45,7 @@ namespace dw
 
   protected:
     sf::Vector2f m_pos;
+    sf::Vector2f m_size;
     float m_speed; //pixel/sec
     sf::Vector2f m_target; //Target coordinates
     sf::Vector2f m_targetDirection; //Target direction normalized

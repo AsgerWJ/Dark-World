@@ -5,8 +5,17 @@
 #include "Entities.h"
 #include "Human.h"
 
+#include "SelectionManager.h"
+
 int main()
 {
+  //Prepare "globals" for managers
+
+  std::vector<dw::BaseEntity*> entityListGlobal; //Vector of all entities in game
+
+  //Create managers
+  dw::SelectionManager selectionManager(&entityListGlobal);
+
 
   int gameWidth = 1024;
   int gameHeight = 860;
@@ -24,11 +33,15 @@ int main()
 
   dw::BaseEntity test1(sf::Vector2f(10,10));
   dw::Human human(sf::Vector2f(10,10));
+  entityListGlobal.push_back(&test1);
+  entityListGlobal.push_back(&human);
 
   //Time stuff
   sf::Clock frameClock;
 	sf::Time frameTime = frameClock.restart();
 
+  bool leftMousePressed = false;
+  sf::Vector2i firstLeftClick, lastLeftClick; //Used for selection detection
 
   //Main game loop
   while(mainWindow.isOpen() )
@@ -64,10 +77,27 @@ int main()
       mainView.move(10,0);
     }
 
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Right) )
+
+    bool leftMousePressedLast = leftMousePressed;
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left) )
     {
-      sf::Vector2i pos = sf::Mouse::getPosition(mainWindow);
-      human.SetMoveTarget(sf::Vector2f(pos.x, pos.y) );
+      if(!leftMousePressed)
+      {//First time press
+        firstLeftClick = sf::Mouse::getPosition(mainWindow);
+      }
+     
+      //human.SetMoveTarget(sf::Vector2f(pos.x, pos.y) );
+      leftMousePressed = true;
+    }
+    else
+      leftMousePressed = false;
+
+    if(leftMousePressedLast && !leftMousePressed)
+    {//left mouse button released
+      lastLeftClick = sf::Mouse::getPosition(mainWindow);
+      //Check for selections
+      selectionManager.SelectEntitiesInArea(firstLeftClick,lastLeftClick);
+
     }
     mainWindow.setView(mainView);
 
@@ -77,6 +107,7 @@ int main()
     //window cleared, update stuff
     human.Update(deltaTime);
 
+    //draw stuff
     mainWindow.draw(human);
 
     //End of this frame

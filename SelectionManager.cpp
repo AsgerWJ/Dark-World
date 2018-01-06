@@ -9,7 +9,7 @@ namespace dw
     m_entities = entityListGlobal;
   }
 
-  int SelectionManager::SelectEntitiesPoint(sf::Vector2f point)
+  int SelectionManager::SelectEntitiesInArea(sf::Vector2f firstPoint, sf::Vector2f lastPoint)
   {
     int selectionCount = 0;
     auto enIt = m_entities->begin();
@@ -17,11 +17,36 @@ namespace dw
     {
       if( *enIt == NULL)
         continue;
-      sf::Vector2f entPos = (*enIt)->GetPos();
-      if( 
+
+      float lowerX = std::min(firstPoint.x, lastPoint.x);
+      float upperX = std::max(firstPoint.x, lastPoint.x);
+
+      float lowerY = std::min(firstPoint.y, lastPoint.y);
+      float upperY = std::max(firstPoint.y, lastPoint.y);
+
+      bool inside = true;
+      
+      sf::Vector2f pos = (*enIt)->GetPos();
+
+      //outide x
+      if(pos.x < lowerX || pos.x > upperX )
+        inside = false;
+
+      //outside y
+      if(pos.y < lowerY || pos.y > upperY )
+        inside = false;
+
+      if ( inside )
+      {
+
+      }
     }
 
     return selectionCount;
+  }
+  int SelectionManager::SelectEntitiesInArea(sf::Vector2i firstPoint, sf::Vector2i lastPoint)
+  {
+    return SelectEntitiesInArea(sf::Vector2f((float)firstPoint.x,(float)firstPoint.y), sf::Vector2f((float)lastPoint.x,(float)lastPoint.y) );
   }
 
 

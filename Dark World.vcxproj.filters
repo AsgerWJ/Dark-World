@@ -54,6 +54,9 @@
     <ClInclude Include="SelectionManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="SelectionMarker.h">
+      <Filter>Entities\Prototypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -76,6 +79,9 @@
     </ClCompile>
     <ClCompile Include="SelectionManager.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionMarker.cpp">
+      <Filter>Entities\Prototypes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
