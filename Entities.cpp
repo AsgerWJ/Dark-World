@@ -25,6 +25,11 @@ namespace dw
   return BaseEntity::ENTITY_NONSELECTABLE;
   }
 
+  int BaseEntity::SetMoveTarget(sf::Vector2i target)
+  {
+    return SetMoveTarget(sf::Vector2f( (float) target.x, (float) target.y) );
+  }
+
   int BaseEntity::SetMoveTarget(sf::Vector2f target)
   {
     m_state = BaseEntity::STATE::IDLE;

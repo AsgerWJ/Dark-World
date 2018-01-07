@@ -6,14 +6,14 @@ namespace dw
   class SelectionManager
   {
   public:
-    SelectionManager(std::vector<dw::BaseEntity*> *entityListGlobal);
+    SelectionManager(std::vector<dw::BaseEntity*> *entityListGlobal, std::vector<dw::BaseEntity*> *selectedListGlobal);
 
-    int SelectEntitiesInArea(sf::Vector2f firstPoint, sf::Vector2f lastPoint);
-    int SelectEntitiesInArea(sf::Vector2i firstPoint, sf::Vector2i lastPoint);
+    int SelectEntitiesInArea(sf::Vector2f firstPoint, sf::Vector2f lastPoint,bool add);
+    int SelectEntitiesInArea(sf::Vector2i firstPoint, sf::Vector2i lastPoint,bool add);
 
   protected:
-      std::vector<BaseEntity *> *m_entities;
-      std::vector<BaseEntity *> m_selectedEntities;
+      std::vector<BaseEntity *> *m_pEntities;
+      std::vector<BaseEntity *> *m_pSelectedEntities;
   }; //end class SelectionManager
 };//end namespace dw
 

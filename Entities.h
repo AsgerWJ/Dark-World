@@ -13,6 +13,7 @@ namespace dw
     // Control functions
     virtual int SetSelected(bool selected); //Select or de-select this entity
     virtual int SetMoveTarget(sf::Vector2f target); //
+    virtual int SetMoveTarget(sf::Vector2i target); //
     virtual sf::Vector2f GetPos();
 
     virtual bool ContainsPoint(sf::Vector2f point);

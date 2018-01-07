@@ -17,7 +17,6 @@ namespace dw
 
   protected:
 
-    float m_size;
     sf::VertexArray m_vertices;
 
 

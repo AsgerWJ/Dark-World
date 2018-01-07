@@ -10,20 +10,21 @@ namespace dw
 
     m_speed = 10;
 
-    m_size = 10.0;
+    m_size.x = 10.0;
+    m_size.y = 10.0;
 
     m_vertices.setPrimitiveType(sf::Quads);
     m_vertices.resize(4);
 
     sf::Vertex* quad = &m_vertices[0];
 
-    quad[0].position = sf::Vector2f(0,0);
+    quad[0].position = sf::Vector2f(spawnPos.x-m_size.x/2,spawnPos.y+m_size.y/2);
     quad[0].color = sf::Color::Green;
-    quad[1].position = sf::Vector2f(m_size,0);
+    quad[1].position = sf::Vector2f(spawnPos.x+m_size.x/2,spawnPos.y+m_size.y/2);
     quad[1].color = sf::Color::Green;
-    quad[2].position = sf::Vector2f(m_size,m_size);
+    quad[2].position = sf::Vector2f(spawnPos.x+m_size.x/2,spawnPos.y-m_size.y/2);
     quad[2].color = sf::Color::Green;
-    quad[3].position = sf::Vector2f(0,m_size);
+    quad[3].position = sf::Vector2f(spawnPos.x-m_size.x/2,spawnPos.y-m_size.y/2);
     quad[3].color = sf::Color::Green;
 
   }
@@ -42,6 +43,7 @@ namespace dw
     {
       bool moving = false;
       float movement = m_speed * timeFrame.asSeconds();
+
       m_pos += m_targetDirection*movement;
 
       if(!moving)

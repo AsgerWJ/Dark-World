@@ -12,9 +12,10 @@ int main()
   //Prepare "globals" for managers
 
   std::vector<dw::BaseEntity*> entityListGlobal; //Vector of all entities in game
+  std::vector<dw::BaseEntity*> selecetedEntityListGlobel; //Vector with all selected entities
 
   //Create managers
-  dw::SelectionManager selectionManager(&entityListGlobal);
+  dw::SelectionManager selectionManager(&entityListGlobal,&selecetedEntityListGlobel);
 
 
   int gameWidth = 1024;
@@ -96,9 +97,20 @@ int main()
     {//left mouse button released
       lastLeftClick = sf::Mouse::getPosition(mainWindow);
       //Check for selections
-      selectionManager.SelectEntitiesInArea(firstLeftClick,lastLeftClick);
+      selectionManager.SelectEntitiesInArea(firstLeftClick,lastLeftClick,false);
 
     }
+
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
+    {
+      sf::Vector2i target= sf::Mouse::getPosition();
+      auto enIt = selecetedEntityListGlobel.begin();
+      for(enIt ; enIt != selecetedEntityListGlobel.end(); enIt++)
+      {
+        (*enIt)->SetMoveTarget(target);
+      }
+    }
+
     mainWindow.setView(mainView);
 
 
