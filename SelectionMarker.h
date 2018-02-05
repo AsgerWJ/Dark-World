@@ -11,6 +11,13 @@ namespace dw
     SelectionMarker();
     void SetState(bool active);
 
+  protected:
+
+    bool m_state;
+
+   private:
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
   }; //End SelectionMarker class
 
 

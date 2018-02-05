@@ -5,12 +5,12 @@ namespace dw
 {
   SelectionMarker::SelectionMarker()
   {
-
+    m_state = false;
   }
 
-  void SetState(bool active)
+  void SelectionMarker::SetState(bool active)
   {
-
+    m_state = active;
   }
 
 };
