@@ -1,0 +1,4 @@
+enum TEXTURE
+{
+  SMILEY
+};

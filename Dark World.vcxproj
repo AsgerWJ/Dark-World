@@ -89,25 +89,26 @@
   <ItemGroup>
     <ClInclude Include="ConfigurationManager.h" />
     <ClInclude Include="dwUtil.h" />
-    <ClInclude Include="Entities.h" />
+    <ClInclude Include="BaseEntity.h" />
     <ClInclude Include="Human.h" />
-    <ClInclude Include="SelectionManager.h" />
-    <ClInclude Include="SelectionMarker.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextureIds.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConfigurationManager.cpp" />
     <ClCompile Include="Dark World.cpp" />
     <ClCompile Include="dwUtil.cpp" />
-    <ClCompile Include="Entities.cpp" />
+    <ClCompile Include="BaseEntity.cpp" />
     <ClCompile Include="Human.cpp" />
-    <ClCompile Include="SelectionManager.cpp" />
-    <ClCompile Include="SelectionMarker.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

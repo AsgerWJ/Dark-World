@@ -2,10 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "Entities.h"
+#include "BaseEntity.h"
 #include "Human.h"
 
-#include "SelectionManager.h"
 
 int main()
 {
@@ -15,7 +14,7 @@ int main()
   std::vector<dw::BaseEntity*> selecetedEntityListGlobel; //Vector with all selected entities
 
   //Create managers
-  dw::SelectionManager selectionManager(&entityListGlobal,&selecetedEntityListGlobel);
+
 
 
   int gameWidth = 1024;
@@ -76,39 +75,6 @@ int main()
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
     {
       mainView.move(10,0);
-    }
-
-
-    bool leftMousePressedLast = leftMousePressed;
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left) )
-    {
-      if(!leftMousePressed)
-      {//First time press
-        firstLeftClick = sf::Mouse::getPosition(mainWindow);
-      }
-     
-      //human.SetMoveTarget(sf::Vector2f(pos.x, pos.y) );
-      leftMousePressed = true;
-    }
-    else
-      leftMousePressed = false;
-
-    if(leftMousePressedLast && !leftMousePressed)
-    {//left mouse button released
-      lastLeftClick = sf::Mouse::getPosition(mainWindow);
-      //Check for selections
-      selectionManager.SelectEntitiesInArea(firstLeftClick,lastLeftClick,false);
-
-    }
-
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
-    {
-      sf::Vector2i target= sf::Mouse::getPosition();
-      auto enIt = selecetedEntityListGlobel.begin();
-      for(enIt ; enIt != selecetedEntityListGlobel.end(); enIt++)
-      {
-        (*enIt)->SetMoveTarget(target);
-      }
     }
 
     mainWindow.setView(mainView);

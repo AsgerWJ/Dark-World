@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "Entities.h"
+#include "BaseEntity.h"
 namespace dw
 {
   BaseEntity::BaseEntity(sf::Vector2f spawnPos)
   {
   m_selectable = false; //default non-selectable
-  //Nothing to do here
+  m_pTexture = NULL;
   }
 
   int BaseEntity::Update(const sf::Time &timeFrame)
@@ -18,23 +18,11 @@ namespace dw
 
   }
 
+  void BaseEntity::loadTexture(sf::Texture *texture)
+  {
+    m_pTexture = texture;
+  }
   /// Control functions
-
-  int BaseEntity::SetSelected(bool selected)
-  {
-  return BaseEntity::ENTITY_NONSELECTABLE;
-  }
-
-  int BaseEntity::SetMoveTarget(sf::Vector2i target)
-  {
-    return SetMoveTarget(sf::Vector2f( (float) target.x, (float) target.y) );
-  }
-
-  int BaseEntity::SetMoveTarget(sf::Vector2f target)
-  {
-    m_state = BaseEntity::STATE::IDLE;
-    return BaseEntity::MOVETARGET_INVALID;
-  }
 
   sf::Vector2f BaseEntity::GetPos()
   {

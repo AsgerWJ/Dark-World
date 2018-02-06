@@ -28,6 +28,9 @@
     <Filter Include="Util">
       <UniqueIdentifier>{ea227335-bc42-4a9d-894d-304c02598784}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities\Player">
+      <UniqueIdentifier>{6a4b8d6d-f57c-48dc-bcca-1be6732f8c42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -39,9 +42,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entities.h">
-      <Filter>Entities\Prototypes</Filter>
-    </ClInclude>
     <ClInclude Include="Human.h">
       <Filter>Entities\Creatures</Filter>
     </ClInclude>
@@ -51,11 +51,17 @@
     <ClInclude Include="dwUtil.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionManager.h">
+    <ClInclude Include="BaseEntity.h">
+      <Filter>Entities\Prototypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionMarker.h">
-      <Filter>Entities\Prototypes</Filter>
+    <ClInclude Include="TextureIds.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -64,9 +70,6 @@
     </ClCompile>
     <ClCompile Include="Dark World.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entities.cpp">
-      <Filter>Entities\Prototypes</Filter>
     </ClCompile>
     <ClCompile Include="Human.cpp">
       <Filter>Entities\Creatures</Filter>
@@ -77,11 +80,14 @@
     <ClCompile Include="dwUtil.cpp">
       <Filter>Util</Filter>
     </ClCompile>
-    <ClCompile Include="SelectionManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionMarker.cpp">
+    <ClCompile Include="BaseEntity.cpp">
       <Filter>Entities\Prototypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
