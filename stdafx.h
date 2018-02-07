@@ -15,5 +15,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML\System\Time.hpp>
 
+#include "dwUtil.h"
+
 
 // TODO: reference additional headers your program requires here

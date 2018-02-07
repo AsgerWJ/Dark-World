@@ -10,11 +10,11 @@ namespace dw
   public:
     TextureManager();
     int LoadTextures();
-
+    sf::Texture * GetTexturePtr(int textureId);
 
   protected:
     int LoadTexture(int textureId, std::string texturepath);
-
+    std::map<int,sf::Texture> m_textures;
 
   };//end class TextureManager
 };// end namespace dw

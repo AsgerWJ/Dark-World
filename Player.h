@@ -5,12 +5,14 @@
 
 namespace dw
 {
-  class Player : BaseEntity
+  class Player : public BaseEntity
   {
   public:
     Player(sf::Vector2f spawnPos);
     void SetMovingDirection(sf::Vector2f movementDir);
     int Update(const sf::Time &timeFrame);
+
+    void loadTexture(sf::Texture *texture);
 
   protected:
 

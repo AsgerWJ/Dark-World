@@ -29,19 +29,50 @@ namespace dw
 
   void Player::SetMovingDirection(sf::Vector2f movementDir)
   {
-    m_state = STATE::MOVING;
+    //m_state = STATE::MOVING;
     m_movement = movementDir;
   }
 
   int Player::Update(const sf::Time &timeFrame)
   {
+    if(util::vector::MagnitudeVector2f(m_movement) > 0.0)
+    {
+      m_state = STATE::MOVING;
+      //Do movement
+      sf::Vector2f movement = util::vector::NomarlizeVector2f(m_movement)*m_speed*timeFrame.asSeconds();
+      m_pos += movement;
+      m_movement.x = 0;
+      m_movement.y = 0;
+      this->setPosition(m_pos);
+    }
+    else
+      m_state = STATE::IDLE;
 
     return NO_ERROR;
   }
 
+  void Player::loadTexture(sf::Texture *texture)
+  {
+    BaseEntity::loadTexture(texture);
+
+    sf::Vertex* quad = &m_vertices[0];
+    // define its 4 texture coordinates
+    quad[0].texCoords = sf::Vector2f(0,10);
+    quad[1].texCoords = sf::Vector2f(0,0);
+    quad[2].texCoords = sf::Vector2f(10,0);
+    quad[3].texCoords = sf::Vector2f(10,10);
+  }
+
   void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
   {
+    // apply the transform
+    states.transform *= getTransform();
 
+    // our particles don't use a texture
+    states.texture = m_pTexture;
+
+    // draw the vertex array
+    target.draw(m_vertices, states);
   }
 
 };//end namespace dw

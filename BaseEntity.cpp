@@ -6,6 +6,8 @@ namespace dw
   {
   m_selectable = false; //default non-selectable
   m_pTexture = NULL;
+  this->setPosition(spawnPos);
+  this->rotate(-90);
   }
 
   int BaseEntity::Update(const sf::Time &timeFrame)

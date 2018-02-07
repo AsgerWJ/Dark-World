@@ -4,6 +4,10 @@
 #include "stdafx.h"
 #include "BaseEntity.h"
 #include "Human.h"
+#include "Player.h"
+
+#include "TextureIds.h"
+#include "TextureManager.h"
 
 
 int main()
@@ -14,7 +18,8 @@ int main()
   std::vector<dw::BaseEntity*> selecetedEntityListGlobel; //Vector with all selected entities
 
   //Create managers
-
+  dw::TextureManager textureManager;
+  textureManager.LoadTextures();
 
 
   int gameWidth = 1024;
@@ -31,10 +36,11 @@ int main()
   //Set vertical sync
   mainWindow.setVerticalSyncEnabled(true);
 
-  dw::BaseEntity test1(sf::Vector2f(10,10));
+  dw::Player player(sf::Vector2f(30,30) );
+  player.loadTexture(textureManager.GetTexturePtr(TEXTURE::SMILEY));
   dw::Human human(sf::Vector2f(10,10));
-  entityListGlobal.push_back(&test1);
   entityListGlobal.push_back(&human);
+  entityListGlobal.push_back(&player);
 
   //Time stuff
   sf::Clock frameClock;
@@ -60,23 +66,28 @@ int main()
       }
     }
     //Do key press action!
+    sf::Vector2f movement;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
     {
-      mainView.move(0,-10);
+      movement.y -= 1;
+      //mainView.move(0,-10);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) )
     {
-      mainView.move(0,10);
+      movement.y += 1;
+      //mainView.move(0,10);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
     {
-      mainView.move(-10,0);
+      movement.x -= 1;
+      //mainView.move(-10,0);
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
     {
-      mainView.move(10,0);
+      movement.x += 1;
+      //mainView.move(10,0);
     }
-
+    player.SetMovingDirection(movement);
     mainWindow.setView(mainView);
 
 
@@ -84,9 +95,11 @@ int main()
     mainWindow.clear(sf::Color::White);
     //window cleared, update stuff
     human.Update(deltaTime);
+    player.Update(deltaTime);
 
     //draw stuff
     mainWindow.draw(human);
+    mainWindow.draw(player);
 
     //End of this frame
     mainWindow.display();
